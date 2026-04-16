@@ -4,8 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jatin Rahinj — AI-Assisted Web Developer</title>
-  <link rel="stylesheet" href="script.js">
-  <link rel="stylesheet" href="script.js">
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
   <style>
     /* ─────────────────────────────────────────
@@ -360,26 +358,126 @@
     }
 
     /* ─────────────────────────────────────────
+       PROJECTS MARQUEE
+    ───────────────────────────────────────── */
+    .projects-marquee {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 3.5rem;
+      background: linear-gradient(90deg, 
+        var(--bg) 0%, 
+        transparent 5%, 
+        transparent 95%, 
+        var(--bg) 100%);
+      padding: 1.5rem 0;
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 2.5rem;
+      animation: marquee 60s linear infinite;
+      white-space: nowrap;
+      padding: 0 2rem;
+    }
+
+    .marquee-track:hover {
+      animation-play-state: paused;
+    }
+
+    .marquee-item {
+      display: inline-flex;
+      font-size: .85rem;
+      color: var(--muted);
+      font-weight: 400;
+      letter-spacing: .02em;
+      flex-shrink: 0;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ─────────────────────────────────────────
        PROJECTS
     ───────────────────────────────────────── */
     #projects { background: var(--bg); }
+
+    .projects-grid {
+      display: grid;
+      gap: 1.75rem;
+    }
 
     .project-card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       overflow: hidden;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-      transition: border-color .3s var(--ease), box-shadow .3s var(--ease);
-      max-width: 960px;
+      transition: all 0.3s var(--ease);
     }
 
     .project-card:hover {
-      border-color: rgba(94,234,212,.3);
+      border-color: var(--accent);
       box-shadow: 0 20px 60px rgba(0,0,0,.4), 0 0 0 1px rgba(94,234,212,.08);
-      transform: translateY(-6px);
+      transform: translateY(-4px);
+    }
+
+    /* Featured card (TripSense) */
+    .project-card-featured {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 0;
+      position: relative;
+    }
+
+    .project-card-featured .project-content {
+      padding: 3.5rem 3.5rem 3.5rem 2.5rem;
+    }
+
+    .project-card-featured .project-visual {
+      min-height: 380px;
+    }
+
+    /* Featured badge */
+    .project-featured-badge {
+      position: absolute;
+      top: 1.5rem;
+      left: 1.5rem;
+      z-index: 10;
+      padding: .35rem .8rem;
+      background: rgba(94,234,212,.12);
+      border: 1px solid rgba(94,234,212,.25);
+      border-radius: 999px;
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    /* Small cards (AURUM, SkinForge) */
+    .projects-small-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.75rem;
+    }
+
+    .project-card-small {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 1fr auto;
+    }
+
+    .project-card-small .project-visual {
+      min-height: 220px;
+      order: -1;
+    }
+
+    .project-card-small .project-content {
+      padding: 2rem 2rem;
+      display: flex;
+      flex-direction: column;
     }
 
     .project-visual {
@@ -733,11 +831,15 @@
       .nav-links { display: none; }
       .hamburger { display: flex; }
 
-      .project-card {
+      .project-card-featured {
         grid-template-columns: 1fr;
       }
 
-      .project-visual { min-height: 200px; }
+      .project-card-featured .project-visual { min-height: 250px; }
+
+      .projects-small-grid {
+        grid-template-columns: 1fr;
+      }
 
       .contact-wrapper {
         grid-template-columns: 1fr;
@@ -745,6 +847,8 @@
       }
 
       .contact-right { padding-top: 0; }
+
+      .marquee-track { gap: 1.75rem; }
     }
 
     @media (max-width: 500px) {
@@ -806,39 +910,172 @@
       <p class="section-desc">Real-world applications built with modern APIs and AI-assisted tooling.</p>
     </div>
 
-    <div class="project-card reveal">
-      <div class="project-visual">
-        <div class="project-icon">✈️</div>
+    <!-- Tech tags marquee -->
+    <div class="projects-marquee reveal">
+      <div class="marquee-track">
+        <span class="marquee-item">Node.js</span>
+        <span class="marquee-item">·</span>
+        <span class="marquee-item">SQLite</span>
+        <span class="marquee-item">·</span>
+        <span class="marquee-item">Express</span>
+        <span class="marquee-item">·</span>
+        <span class="marquee-item">Weather API</span>
+        <span class="marquee-item">·</span>
+        <span class="marquee-item">AQI API</span>
+        <span class="marquee-item">·</span>
+        <span class="marquee-item">Vanilla JS</span>
+        <span class="marquee-item">·</span>
+        <span class="marquee-item">REST APIs</span>
+        <span class="marquee-item">·</span>
+        <span class="marquee-item">HTML5</span>
+        <span class="marquee-item">·</span>
+        <span class="marquee-item">CSS3</span>
+        <span class="marquee-item">·</span>
+        <span class="marquee-item">Minecraft</span>
+        <span class="marquee-item">·</span>
+        <span class="marquee-item">3D Rendering</span>
+        <span class="marquee-item">·</span>
+        <span class="marquee-item">Responsive Design</span>
+        <!-- Duplicate for seamless loop -->
+        <span class="marquee-item">Node.js</span>
+        <span class="marquee-item">·</span>
+        <span class="marquee-item">SQLite</span>
+        <span class="marquee-item">·</span>
+        <span class="marquee-item">Express</span>
+        <span class="marquee-item">·</span>
+        <span class="marquee-item">Weather API</span>
+        <span class="marquee-item">·</span>
+        <span class="marquee-item">AQI API</span>
+        <span class="marquee-item">·</span>
+        <span class="marquee-item">Vanilla JS</span>
+        <span class="marquee-item">·</span>
+        <span class="marquee-item">REST APIs</span>
+        <span class="marquee-item">·</span>
+        <span class="marquee-item">HTML5</span>
+        <span class="marquee-item">·</span>
+        <span class="marquee-item">CSS3</span>
+        <span class="marquee-item">·</span>
+        <span class="marquee-item">Minecraft</span>
+        <span class="marquee-item">·</span>
+        <span class="marquee-item">3D Rendering</span>
+        <span class="marquee-item">·</span>
+        <span class="marquee-item">Responsive Design</span>
+      </div>
+    </div>
+
+    <div class="projects-grid reveal">
+
+      <!-- Featured card: TripSense -->
+      <div class="project-card project-card-featured">
+        <div class="project-featured-badge">Featured</div>
+        <div class="project-visual">
+          <div class="project-icon">✈️</div>
+        </div>
+
+        <div class="project-content">
+          <div>
+            <span class="project-tag">Web App</span>
+            <h3 class="project-name">TripSense</h3>
+            <p class="project-sub">Smart Travel Insight Web Application</p>
+            <p class="project-desc">
+              Search any destination worldwide and get real-time travel intelligence
+              — all in one lightweight, beautiful interface.
+            </p>
+            <ul class="feature-list">
+              <li>Search any location in the world</li>
+              <li>Displays real-time Air Quality Index (AQI)</li>
+              <li>5-day weather forecast with visual indicators</li>
+              <li>Best time to visit recommendations</li>
+              <li>Quick links — Airbnb, MakeMyTrip, Google Flights</li>
+              <li>Dark / light mode toggle</li>
+              <li>Favorite & share locations</li>
+            </ul>
+          </div>
+          <div class="project-btns">
+            <a href="https://thetripsense.in/" class="btn btn-primary" target="_blank" rel="noopener">
+              ↗ Live Demo
+            </a>
+            <a href="https://github.com/jatinrahinj2006-boop/tripsense" class="btn btn-ghost" target="_blank" rel="noopener">
+              ⌥ View Code on GitHub
+            </a>
+          </div>
+        </div>
       </div>
 
-      <div class="project-content">
-        <div>
-          <span class="project-tag">Web App</span>
-          <h3 class="project-name">TripSense</h3>
-          <p class="project-sub">Smart Travel Insight Web Application</p>
-          <p class="project-desc">
-            Search any destination worldwide and get real-time travel intelligence
-            — all in one lightweight, beautiful interface.
-          </p>
-          <ul class="feature-list">
-            <li>Search any location in the world</li>
-            <li>Displays real-time Air Quality Index (AQI)</li>
-            <li>5-day weather forecast with visual indicators</li>
-            <li>Best time to visit recommendations</li>
-            <li>Quick links — Airbnb, MakeMyTrip, Google Flights</li>
-            <li>Dark / light mode toggle</li>
-            <li>Favorite & share locations</li>
-          </ul>
+      <!-- Small cards grid: AURUM + SkinForge -->
+      <div class="projects-small-grid">
+
+        <div class="project-card project-card-small">
+          <div class="project-visual">
+            <div class="project-icon">🏨</div>
+          </div>
+
+          <div class="project-content">
+            <div>
+              <span class="project-tag">Full-Stack App</span>
+              <h3 class="project-name">AURUM</h3>
+              <p class="project-sub">Hotel Management System</p>
+              <p class="project-desc">
+                A full-stack hotel booking and management platform with separate 
+                customer and admin interfaces, real-time room availability, revenue tracking, 
+                and secure authentication.
+              </p>
+              <ul class="feature-list">
+                <li>Dual-interface: customer portal + admin dashboard</li>
+                <li>Real-time room availability and booking system</li>
+                <li>Revenue tracking (daily & monthly)</li>
+                <li>Walk-in booking management</li>
+                <li>Role-based authentication (bcrypt + JWT)</li>
+                <li>Rate limiting and security headers</li>
+              </ul>
+            </div>
+            <div class="project-btns">
+              <a href="https://github.com/jatinrahinj2006-boop/hotel-management-system" class="btn btn-primary" target="_blank" rel="noopener">
+                ↗ View on GitHub
+              </a>
+              <a href="https://github.com/jatinrahinj2006-boop/hotel-management-system" class="btn btn-ghost" target="_blank" rel="noopener">
+                ⌥ View Code on GitHub
+              </a>
+            </div>
+          </div>
         </div>
-        <div class="project-btns">
-          <a href="https://jatinrahinj2006-boop.github.io/tripsense/" class="btn btn-primary" target="_blank" rel="noopener">
-            ↗ Live Demo
-          </a>
-          <a href="https://github.com/jatinrahinj2006-boop/tripsense" class="btn btn-ghost" target="_blank" rel="noopener">
-            ⌥ View Code on GitHub
-          </a>
+
+        <div class="project-card project-card-small">
+          <div class="project-visual">
+            <div class="project-icon">🎮</div>
+          </div>
+
+          <div class="project-content">
+            <div>
+              <span class="project-tag">Creative Tool</span>
+              <h3 class="project-name">SkinForge</h3>
+              <p class="project-sub">Minecraft Skin to Litematica Converter</p>
+              <p class="project-desc">
+                A creative browser tool that converts Minecraft skins into 3D 
+                Litematica statue previews with real-time interactive rendering.
+              </p>
+              <ul class="feature-list">
+                <li>Upload any Minecraft skin (.png)</li>
+                <li>Interactive 3D statue preview (drag to rotate)</li>
+                <li>Multi-skin slot support</li>
+                <li>Material breakdown and block count stats</li>
+                <li>Expandable fullscreen preview mode</li>
+                <li>Pixel-perfect rendering engine</li>
+              </ul>
+            </div>
+            <div class="project-btns">
+              <a href="https://github.com/jatinrahinj2006-boop/SkinForge" class="btn btn-primary" target="_blank" rel="noopener">
+                ↗ View on GitHub
+              </a>
+              <a href="https://github.com/jatinrahinj2006-boop/SkinForge" class="btn btn-ghost" target="_blank" rel="noopener">
+                ⌥ View Code on GitHub
+              </a>
+            </div>
+          </div>
         </div>
+
       </div>
+
     </div>
   </section>
 
@@ -972,7 +1209,7 @@
         <p class="tagline-big">
           Got a problem to<br>solve? Let's turn it<br>into a <span>working product.</span>
         </p>
-        <a href="https://mail.google.com/mail/?view=cm&to=youremail@gmail.com" target="_blank" rel="noopener" class="btn btn-primary">
+        <a href="https://mail.google.com/mail/?view=cm&to=jatinrahinj@gmail.com" target="_blank" rel="noopener" class="btn btn-primary">
           Send a Message ↗
         </a>
       </div>
@@ -982,7 +1219,7 @@
 
   <!-- ─── FOOTER ────────────────────────────── -->
   <footer>
-    <p>© 2025 <a href="#hero">Jatin Rahinj</a> — Engineering Student | Web Projects</p>
+    <p>© 2026 <a href="#hero">Jatin Rahinj</a> — Engineering Student | Web Projects</p>
     <p>Built with HTML · CSS · JavaScript</p>
   </footer>
 
